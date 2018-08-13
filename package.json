@@ -1,24 +1,43 @@
 {
-  "name": "quest-mix-api",
+  "name": "node-ts-pg-starter",
   "version": "1.0.0",
   "description": "",
   "main": "dist/app.js",
+  "nyc": {
+    "exclude": [
+      "**/*_test.js"
+    ],
+    "reporter": "lcov"
+  },
   "scripts": {
-    "start": "node dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r dotenv/config dist/app.js",
+    "test": "mocha --recursive dist/_test",
     "build": "tsc",
+    "build-clean": "del-cli dist && npm run build",
     "postinstall": "npm run build",
     "build-watch": "tsc --watch",
-    "lint": "tslint --project tsconfig.json --config tslint.json --format verbose"
+    "lint": "tslint --project tsconfig.json --config tslint.json --format verbose",
+    "coverage": "nyc npm test",
+    "view-coverage": "opn coverage/lcov-report/index.html"
   },
   "author": "Robert Helms <robert.helms@smashingboxes.com>",
   "license": "ISC",
   "dependencies": {
+    "del-cli": "^1.1.0",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "opn-cli": "^3.1.0",
     "pg": "^7.4.3"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/dotenv": "^4.0.3",
     "@types/express": "^4.16.0",
+    "@types/mocha": "^5.2.5",
+    "@types/pg": "^7.4.10",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   }

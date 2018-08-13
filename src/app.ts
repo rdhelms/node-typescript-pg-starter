@@ -1,9 +1,13 @@
 import express from 'express';
+import { router as indexController } from './controllers/index.controller';
+
 const app = express();
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.use('/', indexController);
 
-/* tslint:disable no-console */
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Example app listening on port 3000')
+const port = process.env.PORT || 3000;
+const server = app.listen(port, () => {
+    console.info(`Listening on port ${port}`);
 });
+
+export { server };
