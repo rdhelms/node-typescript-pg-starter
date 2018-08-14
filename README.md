@@ -1,3 +1,23 @@
+Tools Summary
+============
+* Core
+    * Node
+    * Express
+* DX
+    * TypeScript
+    * TSLint
+* Database
+    * PostgreSQL
+* Authentication
+    * Passport 
+    * bcrypt
+* Testing
+    * Mocha
+    * Chai
+    * istanbul/nyc
+* Deployment
+    * Heroku
+
 Installation
 ============
 `npm install`

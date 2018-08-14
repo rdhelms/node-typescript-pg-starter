@@ -7,7 +7,7 @@ router.route('/')
         try {
             const client = await pool.connect();
             const result = await client.query('SELECT NOW() as now');
-            res.send(JSON.stringify(result, null, 4));
+            res.json(result);
             client.release();
         } catch(err) {
             console.error(err);
