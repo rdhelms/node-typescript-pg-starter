@@ -56,6 +56,7 @@ app.use('/signup', signupController);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
+    // tslint:disable no-console
     console.info(`Listening on port ${port}`);
 });
 

@@ -34,7 +34,10 @@
     "opn-cli": "^3.1.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pg": "^7.4.3"
+    "pg": "^7.4.3",
+    "reflect-metadata": "^0.1.12",
+    "sequelize": "^4.38.0",
+    "sequelize-typescript": "^0.6.6"
   },
   "devDependencies": {
     "@types/bcrypt": "^2.0.0",

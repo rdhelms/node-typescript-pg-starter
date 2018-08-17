@@ -5,11 +5,11 @@
         "no-unnecessary-type-assertion": true,
         "prefer-for-of": true,
         "promise-function-async": true,
-        "await-promise": true,
+        "await-promise": [true, "Bluebird"],
         "ban-comma-operator": true,
         "no-conditional-assignment": true,
         "no-console": {
-            "options": [true, "log"],
+            "options": ["log", "info"],
             "severity": "warning"
         },
         "no-construct": true,

@@ -1,14 +1,12 @@
 import express from 'express';
-import { pool } from '../database/db';
+import { sequelize } from '../sequelize/db';
 const router = express.Router();
 
 router.route('/')
     .get(async (req, res) => {
         try {
-            const client = await pool.connect();
-            const result = await client.query('SELECT NOW() as now');
-            res.json(result);
-            client.release();
+            await sequelize.authenticate();
+            res.send('Connected with sequelize-typescript');
         } catch(err) {
             console.error(err);
             res.send(`Error: ${JSON.stringify(err, null, 4)}`);
