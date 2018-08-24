@@ -1,7 +1,8 @@
 import express, { RequestHandler } from 'express';
 import session from 'express-session';
-import pgSession from 'connect-pg-simple';
-import { pool } from './database/db';
+import ConnectSessionSequelize from 'connect-session-sequelize';
+import { sequelize } from './sequelize/db';
+import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import { localStrategy } from './passports/local.passport';
@@ -9,20 +10,28 @@ import { router as indexController } from './controllers/index.controller';
 import { router as loginController } from './controllers/login.controller';
 import { router as signupController } from './controllers/signup.controller';
 import { TUser } from './types/User';
+import User from './sequelize/models/user.model';
 
 const app = express();
 
+// Cookie middleware
+app.use(cookieParser());
+
 // Session middleware
-const sessionStore = pgSession(session);
+const SequelizeStore = ConnectSessionSequelize<session.Store>(session.Store);
+const storeInstance = new SequelizeStore({
+    db: sequelize
+});
 app.use(session({
-    store: new sessionStore({
-        pool
-    }),
+    secret: process.env.COOKIE_SECRET || 'keyboard cat',
+    store: storeInstance,
     resave: false,
     saveUninitialized: false,
-    secret: process.env.COOKIE_SECRET || 'keyboard cat',
     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }
 }));
+storeInstance.sync({
+    force: true
+});
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,12 +46,17 @@ passport.serializeUser((user: TUser, done) => {
 });
 passport.deserializeUser(async (id, done) => {
     try {
-        const client = await pool.connect();
-        const text = 'SELECT * FROM users WHERE id = $1';
-        const values = [id];
-        const queryResult = await client.query(text, values);
-        done(null, queryResult.rows[0] as TUser);
-        client.release();
+        sequelize.authenticate();
+        const user = await User.findOne({
+            where: {
+                id
+            }
+        });
+        if (user) {
+            done(null, user);
+        } else {
+            throw new Error('No user found');
+        }
     } catch (err) {
         done(err);
     }

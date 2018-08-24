@@ -7,7 +7,11 @@
         "esModuleInterop": true,
         "sourceMap": true,
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "baseUrl": ".",
+        "paths": {
+            "connect-session-sequelize": ["src/typeDeclarations/connectSessionSequelize"]
+        }
     },
     "include": [
         "src/**/*"
