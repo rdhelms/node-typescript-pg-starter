@@ -1,24 +1,24 @@
 Tools Summary
 ============
 * Core
-    * Node
-    * Express
+    * [Node](https://nodejs.org/api/)
+    * [Express](https://expressjs.com/)
 * DX
-    * TypeScript
-    * TSLint
+    * [TypeScript](https://www.typescriptlang.org/docs/home.html)
+    * [TSLint](https://palantir.github.io/tslint/rules/)
 * Database
-    * PostgreSQL
+    * [PostgreSQL](https://www.postgresql.org/)
 * ORM
-    * Sequelize
+    * [Sequelize](http://docs.sequelizejs.com/)
 * Authentication
-    * Passport 
-    * bcrypt
+    * [Passport](http://www.passportjs.org/docs/) 
+    * [bcrypt](https://www.npmjs.com/package/bcrypt)
 * Testing
-    * Mocha
-    * Chai
-    * Istanbul/nyc
+    * [Mocha](https://mochajs.org/)
+    * [Chai](http://www.chaijs.com/api/bdd/)
+    * [Istanbul/nyc](https://www.npmjs.com/package/nyc)
 * Deployment
-    * Heroku
+    * [Heroku](https://heroku.com/)
 
 Installation
 ============
