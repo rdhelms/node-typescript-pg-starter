@@ -6,7 +6,6 @@ const router = express.Router();
 router.route('/')
     .get(async (req, res) => {
         try {
-            await sequelize.authenticate();
             const user = await User.findOne();
             res.json(user);
         } catch(err) {

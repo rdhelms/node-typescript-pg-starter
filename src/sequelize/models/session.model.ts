@@ -1,4 +1,4 @@
-import { Model, Table, Column, DataType } from 'sequelize-typescript';
+import { Model, Table, Column, DataType, PrimaryKey } from 'sequelize-typescript';
 
 export interface ISess {
     cookie: {
@@ -13,16 +13,17 @@ export interface ISess {
 }
 
 @Table({
-    tableName: 'session'
+    tableName: 'sessions'
 })
 export default class Session extends Model<Session> {
 
+    @PrimaryKey
     @Column
     sid!: string;
 
     @Column(DataType.JSON)
-    sess!: ISess;
+    data!: ISess;
 
     @Column
-    expire!: Date;
+    expires!: Date;
 }

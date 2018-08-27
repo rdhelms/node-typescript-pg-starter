@@ -8,3 +8,7 @@ export const sequelize = new Sequelize({
     },
     modelPaths: [`${__dirname}/models`]
 });
+sequelize.authenticate();
+sequelize.sync({
+    force: true
+});

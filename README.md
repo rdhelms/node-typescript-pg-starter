@@ -8,13 +8,15 @@ Tools Summary
     * TSLint
 * Database
     * PostgreSQL
+* ORM
+    * Sequelize
 * Authentication
     * Passport 
     * bcrypt
 * Testing
     * Mocha
     * Chai
-    * istanbul/nyc
+    * Istanbul/nyc
 * Deployment
     * Heroku
 
@@ -58,7 +60,13 @@ Starting the App
 
 `npm start`
 
+To run the linter, delete the `dist` folder, compile the app, and start the server:\
+`npm restart`
+
 Deploying the App
 ============
+[Provisioning the Heroku Postgres addon](https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres) [[Info](https://elements.heroku.com/addons/heroku-postgresql)] 
 
-For help deplying a Node.js app to heroku: [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
+
+For help deplying a Node.js app to heroku:\
+[Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs)

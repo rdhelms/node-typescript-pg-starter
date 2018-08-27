@@ -20,7 +20,8 @@ app.use(cookieParser());
 // Session middleware
 const SequelizeStore = ConnectSessionSequelize<session.Store>(session.Store);
 const storeInstance = new SequelizeStore({
-    db: sequelize
+    db: sequelize,
+    table: 'Session'
 });
 app.use(session({
     secret: process.env.COOKIE_SECRET || 'keyboard cat',
@@ -29,9 +30,6 @@ app.use(session({
     saveUninitialized: false,
     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }
 }));
-storeInstance.sync({
-    force: true
-});
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,7 +44,6 @@ passport.serializeUser((user: TUser, done) => {
 });
 passport.deserializeUser(async (id, done) => {
     try {
-        sequelize.authenticate();
         const user = await User.findOne({
             where: {
                 id
