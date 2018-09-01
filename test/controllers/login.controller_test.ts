@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import axios from 'axios';
 import bcrypt from 'bcrypt';
-import User from '../../sequelize/models/user.model';
+import User from '../../src/sequelize/models/user.model';
 
 describe('controllers | login', function() {
     let bobross: User;

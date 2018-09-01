@@ -24,11 +24,10 @@ Prerequisites
 ============
 Install Node, PostgreSQL, and all [dependencies for bcrypt](https://www.npmjs.com/package/bcrypt#dependencies)
 
-Run the following to create the test and dev databases:
+Run the following to create the test and dev databases, replacing `app_name` with the name of your app:
 ```
-psql -h localhost -p 5432 postgres
-CREATE DATABASE app_name_test;
-CREATE DATABASE app_name_dev;
+createdb app_name_test;
+createdb app_name_dev;
 ```
 
 Installation

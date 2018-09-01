@@ -2,20 +2,19 @@
   "name": "node-ts-pg-starter",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app.js",
+  "main": "dist/src/app.js",
   "nyc": {
     "exclude": [
-      "**/*_test.js"
+	  "dist/test/**/*"
     ],
     "reporter": "lcov"
   },
   "scripts": {
-    "start": "node -r dotenv/config dist/app.js",
-    "test": "cross-env NODE_ENV=test mocha --recursive dist/_test --delay -r dotenv/config",
+    "start": "node -r dotenv/config dist/src/app.js",
+    "test": "cross-env NODE_ENV=test mocha --recursive dist/test --delay -r dotenv/config",
     "build": "tsc",
     "build-clean": "del-cli dist && npm run build",
     "restart": "npm run lint && npm run build-clean && npm start",
-    "postinstall": "npm run build",
     "build-watch": "tsc --watch",
     "lint": "tslint --project tsconfig.json --config tslint.json --format verbose",
     "coverage": "nyc npm test",
@@ -43,7 +42,6 @@
     "sequelize-typescript": "^0.6.6"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/bcrypt": "^2.0.0",
     "@types/body-parser": "^1.17.0",
     "@types/chai": "^4.1.4",
@@ -59,7 +57,7 @@
     "chai": "^4.1.2",
     "cross-env": "^5.2.0",
     "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
+    "nyc": "^13.0.1",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   }

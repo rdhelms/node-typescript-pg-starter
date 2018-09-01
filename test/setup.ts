@@ -1,7 +1,7 @@
 //tslint:disable no-console
-import { app } from '../app';
+import { app } from '../src/app';
 import { Socket, Server } from 'net';
-import { sequelize } from '../sequelize/db';
+import { sequelize } from '../src/sequelize/db';
 import debug from 'debug';
 
 const testDebug = debug('test');
