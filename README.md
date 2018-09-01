@@ -20,9 +20,32 @@ Tools Summary
 * Deployment
     * [Heroku](https://heroku.com/)
 
+Prerequisites
+============
+Install Node, PostgreSQL, and all [dependencies for bcrypt](https://www.npmjs.com/package/bcrypt#dependencies)
+
+Run the following to create the test and dev databases:
+```
+psql -h localhost -p 5432 postgres
+CREATE DATABASE app_name_test;
+CREATE DATABASE app_name_dev;
+```
+
 Installation
 ============
 `npm install`
+
+Environment Variables
+============
+
+Create a root `.env` file with contents in the format VAR=VALUE in order to specify environment variables when running the app locally.
+
+For example,
+```
+TEST_DATABASE_URL=postgres://localhost/app_name_test
+DATABASE_URL=postgres://localhost/app_name_dev
+NODE_ENV=development
+```
 
 Building the App
 ============
@@ -44,16 +67,6 @@ Testing
 
 #### View Test Coverage
 `npm run view-coverage`
-
-Environment Variables
-============
-
-Create a root `.env` file with contents in the format VAR=VALUE in order to specify environment variables when running the app locally.
-
-For example,
-```
-DATABASE_URL=connection_string_from_heroku
-```
 
 Starting the App
 ============

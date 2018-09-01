@@ -1,16 +1,13 @@
 import express from 'express';
-import { sequelize } from '../sequelize/db';
-import User from '../sequelize/models/user.model';
 const router = express.Router();
 
 router.route('/')
     .get(async (req, res) => {
         try {
-            const user = await User.findOne();
-            res.json(user);
+            res.send('Welcome to app_name');
         } catch(err) {
             console.error(err);
-            res.send(`Error: ${JSON.stringify(err, null, 4)}`);
+            res.status(500).send(`Error: ${JSON.stringify(err, null, 4)}`);
         }
     });
 

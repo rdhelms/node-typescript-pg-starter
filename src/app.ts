@@ -65,10 +65,12 @@ app.use('/', indexController);
 app.use('/login', loginController);
 app.use('/signup', signupController);
 
-const port = process.env.PORT || 3000;
-const server = app.listen(port, () => {
-    // tslint:disable no-console
-    console.info(`Listening on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+        // tslint:disable-next-line no-console
+        console.log(`Listening on port ${port}`);
+    });
+}
 
-export { server };
+export { app };
