@@ -30,11 +30,9 @@ server.once('connection', (socket) => {
 });
 
 beforeEach(async function() {
-    const result = await Promise.all(Object.values(sequelize.models).map((model) => {
-        return model.destroy({
-            truncate: true
-        });
-    }));
+    const result = await sequelize.sync({
+        force: true
+    });
     return result;
 });
 
@@ -43,8 +41,8 @@ after(function() {
         if (e) {
             console.log(`Test Server Error:\n`, JSON.stringify(e, null, 4));
         } else {
+            console.log('Test server closed');
             process.exit();
-            console.log('Test server was closed');
         }
     });
     // Just in case there are still any remaining open test sockets, destroy them

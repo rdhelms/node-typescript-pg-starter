@@ -1,14 +1,14 @@
 import express from 'express';
-const router = express.Router();
+const indexController = express.Router();
 
-router.route('/')
+indexController.route('/')
     .get(async (req, res) => {
         try {
-            res.send('Welcome to app_name');
+            res.send('Welcome to the Node TypeScript PostGres Starter API');
         } catch(err) {
-            console.error(err);
-            res.status(500).send(`Error: ${JSON.stringify(err, null, 4)}`);
+            /* istanbul ignore next */
+            res.status(500).send(`${(<Error>err).name}: ${(<Error>err).message}`);
         }
     });
 
-export { router };
+export { indexController };

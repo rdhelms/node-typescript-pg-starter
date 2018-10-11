@@ -8,7 +8,7 @@ describe('app_name', function() {
             response = (await axios.get<unknown>('http://localhost:3000/')).data;
         });
         it('returns welcome message', function() {
-            expect(response).to.equal('Welcome to app_name');
+            expect(response).to.equal('Welcome to the Node TypeScript PostGres Starter API');
         });
     });
 });

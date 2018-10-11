@@ -1,5 +1,5 @@
 import { Strategy as LocalStrategy } from 'passport-local';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import User from '../sequelize/models/user.model';
 
 const localStrategy = new LocalStrategy(async (username, password, done) => {
@@ -22,6 +22,7 @@ const localStrategy = new LocalStrategy(async (username, password, done) => {
     
         done(null, user);
     } catch (err) {
+        /* istanbul ignore next */
         done(err);
     }
 });

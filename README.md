@@ -9,10 +9,10 @@ Tools Summary
 * Database
     * [PostgreSQL](https://www.postgresql.org/)
 * ORM
-    * [Sequelize](http://docs.sequelizejs.com/)
+    * [Sequelize](http://docs.sequelizejs.com/) / ([Sequelize-TypeScript](https://www.npmjs.com/package/sequelize-typescript))
 * Authentication
     * [Passport](http://www.passportjs.org/docs/) 
-    * [bcrypt](https://www.npmjs.com/package/bcrypt)
+    * [bcryptjs](https://www.npmjs.com/package/bcryptjs)
 * Testing
     * [Mocha](https://mochajs.org/)
     * [Chai](http://www.chaijs.com/api/bdd/)
@@ -22,12 +22,12 @@ Tools Summary
 
 Prerequisites
 ============
-Install Node, PostgreSQL, and all [dependencies for bcrypt](https://www.npmjs.com/package/bcrypt#dependencies)
+Install Node and PostgreSQL
 
-Run the following to create the test and dev databases, replacing `app_name` with the name of your app:
+Run the following to create the test and dev databases, replacing `app` with the name of your app:
 ```
-createdb app_name_test;
-createdb app_name_dev;
+createdb app_test;
+createdb app_dev;
 ```
 
 Installation
@@ -41,14 +41,17 @@ Create a root `.env` file with contents in the format VAR=VALUE in order to spec
 
 For example,
 ```
-TEST_DATABASE_URL=postgres://localhost/app_name_test
-DATABASE_URL=postgres://localhost/app_name_dev
+TEST_DATABASE_URL=postgres://localhost/app_test
+DATABASE_URL=postgres://localhost/app_dev
 NODE_ENV=development
 ```
 
 Building the App
 ============
 `npm run build`
+
+#### Delete dist folder and then rebuild
+`npm run build-clean`
 
 #### Build and watch for changes
 `npm run build-watch`
@@ -72,7 +75,7 @@ Starting the App
 
 `npm start`
 
-To run the linter, delete the `dist` folder, compile the app, and start the server:\
+To delete and build the `dist` folder, run the linter, and start the server:\
 `npm restart`
 
 Deploying the App
