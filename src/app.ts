@@ -2,6 +2,7 @@ import express, { RequestHandler } from 'express';
 import session from 'express-session';
 import ConnectSessionSequelize from 'connect-session-sequelize';
 import { sequelize } from './sequelize/db';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import passport from 'passport';
@@ -12,6 +13,11 @@ import { usersController } from './controllers/users.controller';
 import { sessionsController } from './controllers/sessions.controller';
 
 const app = express();
+
+// CORS middleware
+app.use(cors({
+    origin: process.env.NODE_ENV !== 'production' ? true : false // reflects request origin if not production
+}));
 
 // Cookie middleware
 app.use(cookieParser());
