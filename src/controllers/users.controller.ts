@@ -34,17 +34,17 @@ usersController.route('/')
         }
     });
 
-usersController.route('/:userId')
+usersController.route('/:id')
     .get(async (req, res) => {
         try {
             const params = req.params as {
-                userId: string;
+                id: string;
             };
-            const userId = Number(params.userId);
+            const id = Number(params.id);
 
             const user = await User.findOne({
                 where: {
-                    id: userId
+                    id
                 }
             });
 
@@ -57,13 +57,13 @@ usersController.route('/:userId')
     .patch(passport.authenticate('local') as RequestHandler, async (req, res) => {
         try {
             const params = req.params as {
-                userId: string;
+                id: string;
             };
-            const userId = Number(params.userId);
+            const id = Number(params.id);
 
             const currentUser = await User.findOne({
                 where: {
-                    id: userId
+                    id
                 }
             });
 
@@ -85,7 +85,7 @@ usersController.route('/:userId')
 
             const result = await User.update(newInfo, {
                 where: {
-                    id: userId
+                    id
                 },
                 returning: true
             });

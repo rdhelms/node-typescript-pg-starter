@@ -37,9 +37,14 @@ app.use(session({
 }));
 
 // Parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false,
+    limit: '50mb'
+}));
 // Parse application/json
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+    limit: '50mb'
+}));
 
 // Authentication middleware
 app.use(passport.initialize());
