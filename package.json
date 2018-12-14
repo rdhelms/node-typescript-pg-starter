@@ -37,15 +37,15 @@
     "cors": "^2.8.5",
     "debug": "^4.1.0",
     "del-cli": "^1.1.0",
-    "dotenv": "^6.0.0",
+    "dotenv": "^6.2.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "opn-cli": "^3.1.0",
+    "opn-cli": "^4.0.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pg": "^7.6.1",
+    "pg": "^7.7.1",
     "reflect-metadata": "^0.1.12",
-    "sequelize": "^4.41.1",
+    "sequelize": "^4.42.0",
     "sequelize-typescript": "^0.6.6"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "@types/cookie-parser": "^1.4.1",
     "@types/cors": "^2.8.4",
     "@types/debug": "0.0.31",
-    "@types/dotenv": "^4.0.3",
+    "@types/dotenv": "^6.1.0",
     "@types/express": "^4.16.0",
     "@types/express-session": "^1.15.10",
     "@types/mocha": "^5.2.5",
@@ -67,6 +67,6 @@
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.2.2"
   }
 }
